@@ -8,7 +8,6 @@ namespace DotNet7.EFCore_CRUD_.Controllers;
     public class BlogController : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
-
         public BlogController(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
