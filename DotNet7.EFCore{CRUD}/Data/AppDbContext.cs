@@ -8,7 +8,6 @@ namespace DotNet7.EFCore_CRUD_.Data
         public AppDbContext(DbContextOptions options) : base(options)
         {
         }
-
         public DbSet<BlogModel> Blogs { get; set; }
     }
 }
