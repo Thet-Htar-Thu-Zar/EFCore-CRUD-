@@ -89,19 +89,18 @@ namespace DotNet7.EFCore_CRUD_.Controllers;
             if (string.IsNullOrEmpty(requestModel.BlogContent) || id <= 0)
                 return BadRequest();
 
-            bool isDuplicate = await _appDbContext.Blogs
-                    .AsNoTracking()
-                    .AnyAsync(x => x.BlogTitle == requestModel.BlogTitle && x.BlogAuthor == requestModel.BlogAuthor &&
-                     x.IsActive && x.BlogId != id);
-            if (isDuplicate)
-                return Conflict("That Blog already exists!");
+            //bool isDuplicate = await _appDbContext.Blogs
+            //        .AsNoTracking()
+            //        .AnyAsync(x => x.BlogTitle == requestModel.BlogTitle && x.BlogAuthor == requestModel.BlogAuthor &&
+            //         x.IsActive && x.BlogId != id);
+            //if (isDuplicate)
+            //    return Conflict("That Blog already exists!");
 
             var item = await _appDbContext.Blogs
                 .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.BlogId == id && x.IsActive == false);
             if (item is null)
                 return NotFound("Blog Not Found or Inactive!");
-
 
             item.IsActive = true;
             _appDbContext.Entry(item).State = EntityState.Modified;
