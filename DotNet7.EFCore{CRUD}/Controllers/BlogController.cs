@@ -23,7 +23,10 @@ public class BlogController : ControllerBase
     {
         try
         {
-            var lst = await _appDbContext.Blogs.AsNoTracking().ToListAsync();
+            var lst = await _appDbContext
+                .Blogs.AsNoTracking()
+                .OrderByDescending(x => x.BlogId)
+                .ToListAsync();
             return Ok(lst);
         }
         catch (Exception ex)
