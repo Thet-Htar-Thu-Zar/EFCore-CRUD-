@@ -1,6 +1,5 @@
 ﻿using DotNet7.EFCore_CRUD_.Data;
 using DotNet7.EFCore_CRUD_.Model;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
