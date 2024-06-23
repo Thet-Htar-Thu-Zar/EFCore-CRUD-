@@ -53,6 +53,7 @@ public class BlogController : ControllerBase
             if (string.IsNullOrEmpty(requestModel.BlogContent))
                 return BadRequest();
 
+            requestModel.IsActive = true;
             await _appDbContext.Blogs.AddAsync(requestModel);
             int result = await _appDbContext.SaveChangesAsync();
 
