@@ -25,6 +25,7 @@ public class BlogController : ControllerBase
             var lst = await _appDbContext
                 .Blogs.AsNoTracking()
                 .OrderByDescending(x => x.BlogId)
+                .Where(x => x.IsActive)
                 .ToListAsync();
             return Ok(lst);
         }
